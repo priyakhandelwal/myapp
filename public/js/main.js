@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('store', []);
+  var app = angular.module('store', ['store-directives']);
 
   app.controller("StoreController", function($scope) {
     $scope.products = gems;
@@ -57,38 +57,6 @@
       product.reviews.push($scope.review);
       $scope.review = {};
     };
-  });
-
-  app.directive("productDescription", function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'product-description.html'
-    };
-  });
-
-  app.directive("productReviews", function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'product-reviews.html'
-    };
-  });
-
-  app.directive("productTabs", function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'product-tabs.html',
-      controller: function ($scope) {
-        $scope.tab = 1;
-
-        $scope.setTab = function (value) {
-          $scope.tab = value;
-        };
-
-        $scope.isSet = function (value) {
-          return $scope.tab === value;
-        };
-      }
-    }
   });
 
 })();
